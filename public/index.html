@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-time JSONL Viewer</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>📁 Sessions</h2>
+        <button id="refresh-sessions" title="Refresh">🔄</button>
+      </div>
+
+      <div class="file-input">
+        <input type="text" id="custom-path" placeholder="Enter JSONL path...">
+        <button id="load-custom">Load</button>
+      </div>
+
+      <div id="sessions-list" class="sessions-list">
+        <div class="loading">Loading sessions...</div>
+      </div>
+
+      <div class="status">
+        <div id="connection-status" class="status-item">
+          <span class="dot disconnected"></span>
+          <span>Disconnected</span>
+        </div>
+        <div id="watch-status" class="status-item">
+          <span>No file watching</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      <header class="main-header">
+        <h1 id="session-title">Select a session to view</h1>
+        <div class="controls">
+          <button id="theme-toggle" title="Toggle theme">🌙</button>
+          <button id="auto-scroll" class="active" title="Auto scroll">📜 Auto</button>
+        </div>
+      </header>
+
+      <div id="content" class="markdown-body">
+        <div class="welcome">
+          <h2>👋 Welcome to Real-time JSONL Viewer</h2>
+          <p>This tool lets you view Claude Code sessions in real-time.</p>
+          <h3>How to use:</h3>
+          <ol>
+            <li>Select a session from the sidebar, or</li>
+            <li>Enter a custom JSONL file path</li>
+          </ol>
+          <p>The content will update automatically as new messages are added.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/client.js"></script>
+</body>
+</html>
